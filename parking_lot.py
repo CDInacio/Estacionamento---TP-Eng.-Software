@@ -48,7 +48,7 @@ class ParkingLot:
             self.spots[costumer_spot] = 'empty'
 
 
-    def park_car(self):
+    def park_car(self, ticket):
         costumer_spot = 0
         # cont = 0
         for key, value in self.spots.items():
@@ -57,7 +57,6 @@ class ParkingLot:
                 self.spots[key] = 'occupied'
                 costumer_spot = key
                 break
-        ticket = self.generate_ticket()
         # print(f'vagas disponiveis: {cont}') 
         print(f'Seu carro sera estacionado na vaga: {costumer_spot}, e seu ticket de indentificacao eh: {ticket}')
 
