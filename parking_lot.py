@@ -5,7 +5,13 @@ class ParkingLot:
     def __init__(self):
         self.__name = 'UFOP Parking'
         self.__spots = {
-            1: 'empty', 2: 'empty', 3: 'empty', 4: 'empty', 5: 'empty', 6: 'empty', 7: 'empty', 8: 'empty', 9: 'empty', 10: 'empty', 11: 'empty', 12: 'empty', 13: 'empty', 14: 'empty', 15: 'empty', 16: 'empty', 17: 'empty', 18: 'empty', 19: 'empty', 20: 'empty', 21: 'empty', 22: 'empty', 23: 'empty', 24: 'empty', 25: 'empty', 26: 'empty', 27: 'empty', 28: 'empty', 29: 'empty', 30: 'occupied', 31: 'empty', 32: 'empty', 33: 'empty', 34: 'empty', 35: 'empty', 36: 'empty', 37: 'empty', 38: 'empty', 39: 'occupied', 40: 'empty', 41: 'empty', 42: 'empty', 43: 'empty', 44: 'empty', 45: 'empty', 46: 'empty', 47: 'empty', 48: 'empty', 49: 'empty', 50: 'empty'
+            1: 'empty', 2: 'empty', 3: 'empty', 4: 'empty', 5: 'empty', 6: 'empty', 7: 'empty',
+            8: 'empty', 9: 'empty', 10: 'empty',11: 'empty', 12: 'empty', 13: 'empty', 14: 'empty',
+            15: 'empty', 16: 'empty', 17: 'empty', 18: 'empty', 19: 'empty', 20: 'empty',21: 'empty',
+            22: 'empty', 23: 'empty', 24: 'empty', 25: 'empty', 26: 'empty', 27: 'empty', 28: 'empty',
+            29: 'empty', 30: 'occupied',31: 'empty', 32: 'empty', 33: 'empty', 34: 'empty', 35: 'empty',
+            36: 'empty', 37: 'empty', 38: 'empty', 39: 'occupied', 40: 'empty', 41: 'empty', 42: 'empty',
+            43: 'empty', 44: 'empty', 45: 'empty', 46: 'empty', 47: 'empty', 48: 'empty', 49: 'empty', 50: 'empty'
         }
         self.__client_plate_number = []
 
