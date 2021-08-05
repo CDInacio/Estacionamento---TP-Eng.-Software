@@ -39,7 +39,7 @@ class ParkingLot:
 
     def greetings(self, costumer_name):
         print(f'Ola {costumer_name}, seja bem-vindo ao {self.name}, nossos precos sao calculados com base no tempo estacionado.')
-        print('A cada meia hora estacionado sera combrado um valor de R$ 5,00.')
+        print('A cada hora estacionado sera combrado um valor de R$ 10,00.')
         print('Um ticket lhe sera entregue como forma de controle de clientes. \n Em caso de perda do mesmo, a placa do seu carro sera usada como ticket\n')
 
 
@@ -48,7 +48,7 @@ class ParkingLot:
             self.spots[costumer_spot] = 'empty'
 
 
-    def park_car(self, ticket):
+    def park_car(self, ticket, plate_number):
         costumer_spot = 0
         # cont = 0
         for key, value in self.spots.items():
@@ -58,12 +58,20 @@ class ParkingLot:
                 costumer_spot = key
                 break
         # print(f'vagas disponiveis: {cont}') 
-        print(f'Seu carro sera estacionado na vaga: {costumer_spot}, e seu ticket de indentificacao eh: {ticket}')
-
-        
+        self.get_costumer_plate_number(plate_number)
+        return costumer_spot        
     
     def get_costumer_plate_number(self, plate_number):
         self.client_plate_number.append(plate_number)
+        
+    
+    def unpark_car(self, plate_number, costumer_spot):
+        self.spots[costumer_spot] = 'empty'
+        self.client_plate_number.remove(plate_number)
+    
+    
+    def bill_calculate(time):
+         return time * 10
         
 
 if __name__ == '__main__':
