@@ -1,4 +1,7 @@
 import time
+import random
+random_time = random.randint(3600, 18000)
+rand_time = round((random_time/3600), 2)
 
 from parking_lot import ParkingLot
 from client import Client
@@ -10,14 +13,24 @@ client_2 = Client('Guilherme Sei la Oq', 'RIO2A20')
 client_3 = Client('Rafael Nepomuceno', 'RIO2A98')
 
 # cliente 1
-ufop_parking.greetings(client_1.name)
 
+#  um ticket é gerado quando o cliente chega para estacionar
 ticket = ufop_parking.generate_ticket()
 
-res = ufop_parking.park_car(ticket, client_1.plate_number)
+# o cliente estaciona o carro
+arrival = time.time()
+costumer_spot = ufop_parking.park_car(ticket, client_1.plate_number)
+ufop_parking.greetings(client_1.name, costumer_spot)
 
-# print(ufop_parking.client_plate_number)
-
+# cliente recebe um código de verificação ao estacionar
 client_1.add_verification_ticket(ticket)
-print(ufop_parking.spots[1])
+
+# cliente tira o carro do estacionamento
+ufop_parking.unpark_car(client_1.plate_number, costumer_spot)
+
+departure = time.time()
+total_time = (departure - arrival) + rand_time
+
+# um valor é gerado para o cliente pagar
+ufop_parking.bill_generate(total_time)
 

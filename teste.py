@@ -1,9 +1,5 @@
-algo = []
+import random
 
-algo.append('1')
-algo.append('2')
-algo.append('3')
-
-algo.remove('3')
-
-print(algo)
+time = random.randint(3600, 18000)
+new_time = round((time/3600), 2)
+print(new_time)

@@ -33,10 +33,11 @@ class ParkingLot:
         ticket = random.randint(0, 1000)
         return ticket
 
-    def greetings(self, costumer_name):
+    def greetings(self, costumer_name, costumer_spot):
         print(f'Ola {costumer_name}, seja bem-vindo ao {self.name}, nossos precos sao calculados com base no tempo estacionado.')
         print('A cada hora estacionado sera combrado um valor de R$ 10,00.')
         print('Um ticket lhe sera entregue como forma de controle de clientes. \n Em caso de perda do mesmo, a placa do seu carro sera usada como ticket\n')
+        print(f'Seu carro pode ser estacionado na vaga {costumer_spot}')
 
     def unpark_car(self, costumer_spot):
         for key, value in self.spots.items():
@@ -58,16 +59,15 @@ class ParkingLot:
     def get_costumer_plate_number(self, plate_number):
         self.client_plate_number.append(plate_number)
 
-    def unpark_car(self, plate_number, costumer_spot, time):
+    def unpark_car(self, plate_number, costumer_spot):
         self.spots[costumer_spot] = 'empty'
         self.client_plate_number.remove(plate_number)
-        self.bill_generate(time)
 
     @staticmethod
     def bill_generate(time):
         # tempo em minutos
         price = time * 10
-        print(f'Sua conta deu um total de {price}')
+        print(f'Seu carro ficou estacionado por : {time} horas, sua conta deu um total de R$: {price:.2f}')
 
 
 if __name__ == '__main__':
