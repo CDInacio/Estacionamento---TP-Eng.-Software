@@ -4,7 +4,7 @@ import random
 
 class ParkingLot:
     def __init__(self):
-        self.__name = 'UFOP Parking'
+        self.__name = 'UFOP PARKING'
         self.__spots = {
             1: 'empty', 2: 'empty', 3: 'empty', 4: 'empty', 5: 'empty', 6: 'empty', 7: 'empty',
             8: 'empty', 9: 'empty', 10: 'empty', 11: 'empty', 12: 'empty', 13: 'empty', 14: 'empty',
@@ -14,36 +14,40 @@ class ParkingLot:
             36: 'empty', 37: 'empty', 38: 'empty', 39: 'occupied', 40: 'empty', 41: 'empty', 42: 'empty',
             43: 'empty', 44: 'empty', 45: 'empty', 46: 'empty', 47: 'empty', 48: 'empty', 49: 'empty', 50: 'empty'
         }
-        self.__client_plate_number = []
+        self.__client_info = {}
+        self.num_clientes = 0
+
 
     @property
     def name(self):
         return self.__name
 
+
     @property
     def spots(self):
         return self.__spots
 
+
     @property
-    def client_plate_number(self):
-        return self.__client_plate_number
+    def client_info(self):
+        return self.__client_info
+
 
     @staticmethod
     def generate_ticket():
         ticket = random.randint(0, 1000)
         return ticket
 
+
     def greetings(self, costumer_name, costumer_spot):
-        print(f'Ola {costumer_name}, seja bem-vindo ao {self.name}, nossos precos sao calculados com base no tempo estacionado.')
-        print('A cada hora estacionado sera combrado um valor de R$ 10,00.')
-        print('Um ticket lhe sera entregue como forma de controle de clientes\n Em caso de perda do mesmo, a placa do seu carro sera usada como ticket\n')
-        print(f'Seu carro pode ser estacionado na vaga {costumer_spot}')
+        print(f'SEJA BEM-VINDO AO {self.name}, {costumer_name}.')
+        print('Nossos precos sao calculados com base no tempo estacionado.')
+        print('A cada hora estacionado lhe sera combrado um valor de R$ 10,00.')
+        print(f'Seu carro pode ser estacionado na vaga {costumer_spot}.')
 
-    def unpark_car(self, costumer_spot):
-        for key, value in self.spots.items():
-            self.spots[costumer_spot] = 'empty'
 
-    def park_car(self, ticket, plate_number):
+    def park_car(self, plate_number, name):
+        print('ESTACIONANDO O CARRO...\n')
         costumer_spot = 0
         # cont = 0
         for key, value in self.spots.items():
@@ -53,15 +57,25 @@ class ParkingLot:
                 costumer_spot = key
                 break
         # print(f'vagas disponiveis: {cont}')
-        self.get_costumer_plate_number(plate_number)
+        self.num_clientes += 1
+        self.store_costumer_info(plate_number, name, costumer_spot)
         return costumer_spot
 
-    def get_costumer_plate_number(self, plate_number):
-        self.client_plate_number.append(plate_number)
 
-    def unpark_car(self, plate_number, costumer_spot):
+    def store_costumer_info(self, plate_number, name, car_spot):
+        self.client_info['name'] = name
+        self.client_info['plate_number'] = plate_number
+        self.client_info['car_spot'] = car_spot
+        self.client_info[''] = car_spot
+
+
+    def unpark_car(self, costumer_spot):
+        print('REMOVENDO O CARRO...')
         self.spots[costumer_spot] = 'empty'
-        self.client_plate_number.remove(plate_number)
+        del self.client_info['name']
+        del self.client_info['plate_number']
+        del self.client_info['car_spot']
+
 
     @staticmethod
     def bill_generate(time):
