@@ -36,7 +36,7 @@ class ParkingLot:
     def greetings(self, costumer_name, costumer_spot):
         print(f'Ola {costumer_name}, seja bem-vindo ao {self.name}, nossos precos sao calculados com base no tempo estacionado.')
         print('A cada hora estacionado sera combrado um valor de R$ 10,00.')
-        print('Um ticket lhe sera entregue como forma de controle de clientes. \n Em caso de perda do mesmo, a placa do seu carro sera usada como ticket\n')
+        print('Um ticket lhe sera entregue como forma de controle de clientes\n Em caso de perda do mesmo, a placa do seu carro sera usada como ticket\n')
         print(f'Seu carro pode ser estacionado na vaga {costumer_spot}')
 
     def unpark_car(self, costumer_spot):
@@ -67,7 +67,7 @@ class ParkingLot:
     def bill_generate(time):
         # tempo em minutos
         price = time * 10
-        print(f'Seu carro ficou estacionado por : {time} horas, sua conta deu um total de R$: {price:.2f}')
+        print(f'Seu carro ficou estacionado por : {time:.2f} horas, sua conta deu um total de R$: {price:.2f}\n\n')
 
 
 if __name__ == '__main__':

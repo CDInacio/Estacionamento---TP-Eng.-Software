@@ -12,8 +12,7 @@ client_1 = Client('Cláudio Dantas', 'RIO2A18')
 client_2 = Client('Guilherme Sei la Oq', 'RIO2A20')
 client_3 = Client('Rafael Nepomuceno', 'RIO2A98')
 
-# cliente 1
-
+##### CLIENTE 1 #####
 #  um ticket é gerado quando o cliente chega para estacionar
 ticket = ufop_parking.generate_ticket()
 
@@ -21,6 +20,7 @@ ticket = ufop_parking.generate_ticket()
 arrival = time.time()
 costumer_spot = ufop_parking.park_car(ticket, client_1.plate_number)
 ufop_parking.greetings(client_1.name, costumer_spot)
+ufop_parking.get_costumer_plate_number(client_1.plate_number)
 
 # cliente recebe um código de verificação ao estacionar
 client_1.add_verification_ticket(ticket)
@@ -33,4 +33,11 @@ total_time = (departure - arrival) + rand_time
 
 # um valor é gerado para o cliente pagar
 ufop_parking.bill_generate(total_time)
+
+
+
+
+
+
+
 
