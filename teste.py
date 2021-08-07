@@ -1,8 +1,13 @@
+from datetime import date, datetime
+from math import e
+from parking_lot import *
+from random import sample
+import time
 
-client_info = {'num_clientes': 0}
+start = datetime.now()
+time.sleep(5)
+end = datetime.now()
 
-client_info['name'] = 'claudio'
-client_info['car_spot'] = 1
-client_info['plate_number'] = 'abc1234'
-
-print(client_info)
+res = end - start
+ParkingLot.bill_generate(start, end)
+print(type(res.total_seconds()))

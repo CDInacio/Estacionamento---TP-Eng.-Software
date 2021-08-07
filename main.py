@@ -1,5 +1,7 @@
 import time
 import random
+from datetime import datetime
+
 random_time = random.randint(3600, 18000)
 rand_time = round((random_time/3600), 2)
 
@@ -12,47 +14,26 @@ client_1 = Client('Claudio Dantas', 'RIO2A18')
 client_2 = Client('Guilherme Sei la Oq', 'RIO2A20')
 client_3 = Client('Rafael Nepomuceno', 'RIO2A98')
 
-##### CLIENTE 1 #####
-#  um ticket é gerado quando o cliente chega para estacionar
-ticket = ufop_parking.generate_ticket()
 
-# o cliente estaciona o carro
-arrival = time.time()
-costumer_spot = ufop_parking.park_car(client_1.plate_number, client_1.name)
-ufop_parking.greetings(client_1.name, costumer_spot)
+ufop_parking.greetings()
+spot = ufop_parking.check_vacancy()
 
-# cliente recebe um código de verificação ao estacionar
-# client_1.add_verification_ticket(ticket)
+time.sleep(2)
 
-# cliente tira o carro do estacionamento    
-ufop_parking.unpark_car(costumer_spot)
-departure = time.time()
-total_time = (departure - arrival) + rand_time
-
-# um valor é gerado para o cliente pagar
-ufop_parking.bill_generate(total_time)
-
-
-##### CLIENTE 2 #####
-#  um ticket é gerado quando o cliente chega para estacionar
-ticket = ufop_parking.generate_ticket()
-
-# o cliente estaciona o carro
-arrival = time.time()
-costumer_spot = ufop_parking.park_car(client_2.plate_number, client_2.name)
-ufop_parking.greetings(client_2.name, costumer_spot)
-
-# cliente recebe um código de verificação ao estacionar
-# client_1.add_verification_ticket(ticket)
-
-# cliente tira o carro do estacionamento    
-ufop_parking.unpark_car(costumer_spot)
-departure = time.time()
-total_time = (departure - arrival) + rand_time
-
-# um valor é gerado para o cliente pagar
-ufop_parking.bill_generate(total_time)
-
+if spot == 0:
+    print('Nao ha vagas disponiveis no momento!')
+else:
+    start = datetime.now()
+    car_spot = ufop_parking.park_car(client_1.plate_number)
+    print('Gerando ticket...')
+    time.sleep(1)
+    ticket = ufop_parking.generate_ticket(start, car_spot)
+    print('Ticket gerado...')
+    time.sleep(10)
+    ufop_parking.store_costumer_info(client_1.plate_number, car_spot)
+    ufop_parking.unpark_car(car_spot)
+    end = datetime.now()
+    ufop_parking.bill_generate(start, end)
 
 
 
