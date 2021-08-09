@@ -61,6 +61,11 @@ class ParkingLot:
 
 
     def park_car(self, plate_number):
+        num = self.check_vacancy()
+        if num == 0:
+            print('Nao ha vagas')
+            return
+            
         print('ESTACIONANDO O CARRO...\n')
         costumer_spot = 0
         # cont = 0
@@ -77,12 +82,16 @@ class ParkingLot:
 
 
     def store_costumer_info(self, plate_number, car_spot):
+        if car_spot == None:
+            return
         self.client_info['plate_number'] = plate_number
         self.client_info['car_spot'] = car_spot
         self.client_info[''] = car_spot
 
 
     def unpark_car(self, costumer_spot):
+        if costumer_spot == None:
+            return
         print('REMOVENDO O CARRO...')
         self.spots[costumer_spot] = 'empty'
         del self.client_info['plate_number']
@@ -90,7 +99,9 @@ class ParkingLot:
 
 
     @staticmethod
-    def bill_generate(start, end):
+    def bill_generate(start, end, car_spot):
+        if car_spot == None:
+            return
         # tempo em minutos
         time = end - start
         sub_time = time.total_seconds()
