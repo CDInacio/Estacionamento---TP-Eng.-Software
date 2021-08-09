@@ -106,7 +106,7 @@ class ParkingLot:
         time = end - start
         sub_time = time.total_seconds()
         price = ((sub_time)/3600) * 10
-        print(f'Seu carro ficou estacionado por : {sub_time/60} horas, sua conta deu um total de R$: {price:.2f}\n\n')
+        print(f'Seu carro ficou estacionado por : {(sub_time/60):.2f} horas, sua conta deu um total de R$: {price:.2f}\n\n')
 
 
 if __name__ == '__main__':

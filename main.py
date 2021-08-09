@@ -17,11 +17,11 @@ start = datetime.now()
 
 spot = ufop_parking.park_car(client_1.plate_number)
 
-time.sleep(5)
-
 ufop_parking.store_costumer_info(client_1.plate_number, spot)
 
 ufop_parking.generate_ticket(start, spot)
+
+time.sleep(10)
 
 ufop_parking.unpark_car(spot)
 
