@@ -39,7 +39,7 @@ class ParkingLot:
         ticket_info = dict()
         num = random.randint(0, 1000)
         ticket_info['num'] = num
-        ticket_info['arrival'] = time
+        ticket_info['arrival'] = time.strftime("%H:%M:%S")
         ticket_info['car_spot'] = spot
         return ticket_info
 
@@ -107,6 +107,7 @@ class ParkingLot:
         sub_time = time.total_seconds()
         price = ((sub_time)/3600) * 10
         print(f'Seu carro ficou estacionado por : {(sub_time/60):.2f} horas, sua conta deu um total de R$: {price:.2f}\n\n')
+
 
 
 if __name__ == '__main__':

@@ -20,6 +20,11 @@ class Client:
         return self.__verification_ticket
     
     
-    def add_verification_ticket(self, ticket):
-        self.verification_ticket.append(ticket)
+    @verification_ticket.setter
+    def verification_ticket(self, value):
+        self.__verification_ticket = value
+    
+    
+    def get_verification_ticket(self, ticket):
+        self.verification_ticket = ticket
     
